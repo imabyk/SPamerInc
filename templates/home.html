@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="static/modal.css">
+<link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+<header>
+	<a href="" class="logo">S</a>
+</header>
+
+<!-- particles.js container -->
+	<div >
+		<div class="container">
+			<div class="text">spamer<br>inc</div>
+		</div>
+		<div class="container">
+			<div class="row cus-box bx3">
+
+				<div class="col-md-6">
+					<div class="container">
+						<h1>
+							Enter <br>Your<br> Message
+						</h1>
+					</div>
+				</div>
+				
+				<div class="col-md-6">
+					<div class="card-cus">
+						<form class="formbox" action="{{ url_for('predict')}}" method="POST" >
+							<input type="text" placeholder="Enter your message here" name="message" class="inputtxt" required>
+							<br/>
+							<div class="btn-box">
+								<input type="Submit" class="soft-btn trigger-btn" value="Predict">
+								<input type="reset" class="soft-btn rbtn" value="">
+								<i class="fa fa-refresh" style="font-size:28px; 
+																color: #999999; 
+																position: relative;
+																left: -67px;"></i>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				
+
+				
+			</div>
+			
+		</div>
+
+		<div class="container">
+			<div class="row cus-box bx2">
+				<div class="col-md-4 dis-flex">
+					<div class="text" style="padding-top: 0%;">S</div>
+				</div>
+				<div class="col-md-4 dis-flex">
+					<h2>
+						Working
+					</h2>
+					<p>
+						bla! bla! bla!
+					</p>
+				</div>
+				<div class="col-md-4 dis-flex">
+					<h2>
+						Team Members
+					</h2>
+					<p>
+						<ul>
+							<li>Abhimanyu Gautum 18201</li>
+							<li>Abhinit Singh 18202</li>
+							<li>Abhishek Gaur 18203</li>
+							<li>Abhishek kumar 18204</li>
+					 	</ul>
+					</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12 dis-flex rflex">
+						<div class="heart">
+								❤
+						</div> 
+						<p>Team Spamer Inc 
+					</p>
+				</div>
+			</div>
+		</div>
+   </div>
+
+<div id="myModal" class="modal fade">
+	<div class="modal-dialog modal-confirm">
+			{% if prediction == 1 %}
+				<div class="modal-content">
+					<div class="modal-header">
+						<div class="icon-box  fail">
+							<svg width="59px" height="55px" viewBox="0 0 17 16" class="bi bi-exclamation-triangle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 5zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+							  </svg>
+						</div>				
+						<h4 class="modal-title" style="width:100%; color: #da2c12;">SPAM</h4>	
+					</div>
+					<div class="modal-body">
+						<p class="text-center">ITS A SPAM, RISKY TO GO AHEAD</p>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-block fail" data-dismiss="modal">OK</button>
+					</div>
+				</div>
+			
+			{% elif prediction == 0 %}
+				<div class="modal-content">
+					<div class="modal-header">
+						<div class="icon-box success">
+							<svg width="65px" height="65px" viewBox="0 0 16 16" class="bi bi-shield-fill-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" d="M8 .5c-.662 0-1.77.249-2.813.525a61.11 61.11 0 0 0-2.772.815 1.454 1.454 0 0 0-1.003 1.184c-.573 4.197.756 7.307 2.368 9.365a11.192 11.192 0 0 0 2.417 2.3c.371.256.715.451 1.007.586.27.124.558.225.796.225s.527-.101.796-.225c.292-.135.636-.33 1.007-.586a11.191 11.191 0 0 0 2.418-2.3c1.611-2.058 2.94-5.168 2.367-9.365a1.454 1.454 0 0 0-1.003-1.184 61.09 61.09 0 0 0-2.772-.815C9.77.749 8.663.5 8 .5zm2.854 6.354a.5.5 0 0 0-.708-.708L7.5 8.793 6.354 7.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+							  </svg>
+						</div>				
+							<h4 class="modal-title" style=" width: 100%;color: #6fb32b;">NOT A SPAM</h4>	
+					</div>
+					<div class="modal-body">
+						<p class="text-center">GOOD TO GO, ITS NOT A SPAM MESSAGE.</p>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-block success" data-dismiss="modal">OK</button>
+					</div>
+				</div>
+			
+			{% endif %}
+		
+	</div>
+</div> 
+
+
+<!-- scripts -->
+<script src="static/particles.js"></script>
+<script src="static/js/app.js"></script>
+<script src="static/js/navbar.js"></script>
+
+<script>
+  var count_particles, stats, update;
+  stats = new Stats;
+  stats.setMode(0);
+  stats.domElement.style.position = 'absolute';
+  stats.domElement.style.left = '0px';
+  stats.domElement.style.top = '0px';
+  document.body.appendChild(stats.domElement);
+  count_particles = document.querySelector('.js-count-particles');
+  update = function() {
+    stats.begin();
+    stats.end();
+    if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+      count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+    }
+    requestAnimationFrame(update);
+  };
+  requestAnimationFrame(update);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" type="text/css"  href="static/style.css">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+	<style>
+
+		
+			.spam{
+				min-height: 100vh;
+				min-width: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.text-msg {
+				margin-top: 50px;
+				font-size: 6em;
+				font-weight: bold;
+				line-height: 80%;
+				font-family: sans-serif;
+				text-align: center;
+				text-transform: uppercase;
+				position: relative;
+				overflow-wrap: break-word;
+				}
+
+			.stxt{
+				color: #ecaa9a;
+				background-color:#ecaa9a;
+				text-shadow: 6px 6px 15px  #c96248,-6px -6px 15px #f3bdaf;
+				
+				
+			}
+
+			.htxt{
+				color: #adf1e0;
+				background-color:#adf1e0;
+				text-shadow: 6px 6px 15px  #62b9a4,-6px -6px 15px #c8faed;
+				
+			}
+
+			.img-svg{
+				height: 150px;
+				width: 150px;
+				border-radius: 50%;
+				color: #fff;
+			}
+
+			svg{
+				margin-left:25px;
+				margin-top:15px;
+				height: 100px;
+
+			}
+			.backbtn{
+				height: 75px;
+				width: 75px;
+				border-radius: 50%;
+				margin-top: 50px;
+				cursor: pointer;
+				transition: all .4s ease-in-out;
+			}
+
+			.red-btn{
+				box-shadow: 6px 6px 15px  #c96248,-6px -6px 15px #f3bdaf;
+			}
+			.red-btn:hover {
+				box-shadow: -2px -2px 5px #f3bdaf, 2px 2px 5px #c96248;
+			}
+			.red-btn:active {
+				box-shadow: inset 1px 1px 2px #c96248, inset -1px -1px 2px #f3bdaf;
+			}
+
+			.grn-btn{
+				box-shadow: 6px 6px 15px  #62b9a4,-6px -6px 15px #c8faed;
+			}
+			.grn-btn:hover {
+				box-shadow: -2px -2px 5px #c8faed, 2px 2px 5px #62b9a4;
+			}
+			.grn-btn:active {
+				box-shadow: inset 1px 1px 2px #62b9a4, inset -1px -1px 2px #c8faed;
+			}
+	</style>
+
+
+</head>
+
+<body>
+
+	<div class="container-fluid">
+		{% if prediction == 1 %}
+		<div class="container spam stxt">
+			<div class="img-svg" style="box-shadow: 6px 6px 15px  #c96248,-6px -6px 15px #f3bdaf;">
+				<svg  viewBox="0 0 17 16" class="bi bi-exclamation-triangle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd" d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 5zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+				  </svg>
+			</div>
+			<div class="text-msg stxt">
+				spam
+			</div>
+			<div class="backbtn red-btn" onclick="goBack()">
+				<i class="fa fa-arrow-left" style="font-size:48px; color: white; margin-top: 10px;margin-left: 15px; text-shadow: 0px 0px 0px;"></i>
+			</div>
+		</div>
+		{% elif prediction == 0 %}
+		<div class="container spam htxt">
+			<div class="img-svg" style=" box-shadow: 6px 6px 15px  #62b9a4,-6px -6px 15px #c8faed;">
+				<svg style="margin-top: 30px;" viewBox="0 0 16 16" class="bi bi-shield-fill-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd" d="M8 .5c-.662 0-1.77.249-2.813.525a61.11 61.11 0 0 0-2.772.815 1.454 1.454 0 0 0-1.003 1.184c-.573 4.197.756 7.307 2.368 9.365a11.192 11.192 0 0 0 2.417 2.3c.371.256.715.451 1.007.586.27.124.558.225.796.225s.527-.101.796-.225c.292-.135.636-.33 1.007-.586a11.191 11.191 0 0 0 2.418-2.3c1.611-2.058 2.94-5.168 2.367-9.365a1.454 1.454 0 0 0-1.003-1.184 61.09 61.09 0 0 0-2.772-.815C9.77.749 8.663.5 8 .5zm2.854 6.354a.5.5 0 0 0-.708-.708L7.5 8.793 6.354 7.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+				  </svg>
+			</div>
+			<div class="text-msg htxt">
+				Not a Spam
+			</div>
+			<div class="backbtn grn-btn" onclick="goBack()">
+				<i class="fa fa-arrow-left" style="font-size:48px; color: white; margin-top: 10px;margin-left: 15px; text-shadow: 0px 0px 0px;"></i>
+			</div>
+		</div>
+		{% endif %}
+
+	</div>
+
+	<script>
+		function goBack() {
+		  window.history.back();
+		}
+		</script>
+
+</body>
+</html>
